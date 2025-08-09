@@ -4,6 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  [build.environment]
+  CI = "false"
 
 [[redirects]]
   from = "/*"
