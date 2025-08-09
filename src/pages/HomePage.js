@@ -84,8 +84,8 @@ const HomePage = () => {
                 to="/builder"
                 className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-emerald-600 to-cyan-600 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               >
-                <FileText className="h-5 w-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
-                ✨ Start Building Now
+                <FileText className="relative z-10 h-5 w-5 mr-2 group-hover:rotate-12 transition-transform duration-300" />
+                <span className="relative z-10">✨ Start Building Now</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-cyan-700 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
               <Link
