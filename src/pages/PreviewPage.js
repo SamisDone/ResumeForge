@@ -4,7 +4,7 @@ import { pdf } from '@react-pdf/renderer';
 import CVPreview from '../components/CVPreview';
 import TemplateSelector from '../components/TemplateSelector';
 import PDFDocument from '../components/PDFDocument';
-import { Download, Eye, Palette, FileText } from 'lucide-react';
+import { Download, Eye, Palette } from 'lucide-react';
 
 const PreviewPage = () => {
   const { state } = useCV();
