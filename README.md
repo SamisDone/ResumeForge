@@ -1,70 +1,101 @@
-# Getting Started with Create React App
+# ResumeForge 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**The Professional Resume Builder That Gets You Hired**
 
-## Available Scripts
+ResumeForge is a modern, intuitive web application that helps job seekers create professional, ATS-friendly resumes in minutes. Built with React and featuring a beautiful, responsive design, ResumeForge makes resume building effortless and enjoyable.
 
-In the project directory, you can run:
+## ✨ Features
 
-### `npm start`
+### 🎨 **Beautiful Templates**
+- **Modern Template**: Clean, professional design with emerald accents
+- **Classic Template**: Traditional serif layout for conservative industries  
+- **Minimal Template**: Clean black & white design for tech roles
+- **Live Preview**: See changes in real-time as you build
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🛠️ **Powerful Builder**
+- **Intuitive Forms**: Step-by-step guided process
+- **Dynamic Sections**: Add/remove work experience, education, skills, and projects
+- **Auto-Save**: Never lose your progress with automatic local storage
+- **Profile Pictures**: Upload and preview profile photos
+- **Smart Validation**: Helpful tips and guidance throughout
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 📄 **Professional Export**
+- **High-Quality PDF**: Download print-ready resumes
+- **ATS-Friendly**: Optimized for Applicant Tracking Systems
+- **Multiple Formats**: Choose from different template styles
+- **Instant Download**: Get your resume in seconds
 
-### `npm test`
+### 🔒 **Privacy First**
+- **Local Storage**: Your data stays in your browser
+- **No Registration**: Start building immediately
+- **Completely Private**: No server uploads required
+- **GDPR Compliant**: Full control over your personal data
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 🏗️ Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+src/
+├── components/           # Reusable UI components
+│   ├── forms/           # Form components for each section
+│   ├── templates/       # Resume template components
+│   ├── pdf/            # PDF export templates
+│   ├── Navbar.js       # Navigation component
+│   └── CVPreview.js    # Live preview component
+├── pages/              # Main page components
+│   ├── HomePage.js     # Landing page
+│   ├── CVBuilderPage.js # Resume builder interface
+│   └── PreviewPage.js  # Preview and export page
+├── context/            # React Context for state management
+│   └── CVContext.js    # Global CV data context
+├── styles/             # CSS and styling
+└── App.js             # Main application component
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🎯 Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Building Your Resume
 
-### `npm run eject`
+1. **Personal Information**: Add your contact details and upload a profile picture
+2. **Professional Summary**: Write a compelling summary of your experience
+3. **Work Experience**: Add your employment history with detailed responsibilities
+4. **Education**: Include your academic background and qualifications
+5. **Skills**: List your technical and soft skills with proficiency levels
+6. **Projects**: Showcase your portfolio and notable achievements
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Choosing Templates
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Navigate to the **Preview** page to see your resume in different styles
+- Switch between Modern, Classic, and Minimal templates
+- Your data is preserved when switching templates
+- Download your preferred version as PDF
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🛠️ Built With
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **React 18** - Modern JavaScript library for building user interfaces
+- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
+- **React Router** - Declarative routing for React applications
+- **React PDF** - High-quality PDF generation for resumes
+- **Lucide React** - Beautiful, customizable icons
+- **Context API** - Built-in React state management
 
-## Learn More
+## 📱 Responsive Design
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ResumeForge works perfectly on all devices:
+- **Desktop**: Full-featured experience with side-by-side editing and preview
+- **Tablet**: Optimized layout for touch interactions
+- **Mobile**: Streamlined interface for on-the-go editing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🎨 Design System
 
-### Code Splitting
+### Color Palette
+- **Primary**: Emerald to Cyan gradient (`from-emerald-500 to-cyan-500`)
+- **Neutral**: Slate grays for professional appearance
+- **Background**: Subtle gradients for visual depth
+- **Text**: High contrast ratios for accessibility
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Typography
+- **Headings**: Bold, modern fonts for impact
+- **Body**: Clean, readable fonts for content
+- **Code**: Monospace fonts for technical elements
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
