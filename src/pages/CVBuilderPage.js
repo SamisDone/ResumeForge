@@ -10,7 +10,6 @@ import { User, FileText, Briefcase, GraduationCap, Code, FolderOpen } from 'luci
 import { useCV } from '../context/CVContext';
 
 const CVBuilderPage = () => {
-  const { state, dispatch } = useCV();
   const [activeSection, setActiveSection] = useState('personal');
 
   const sections = [
@@ -25,9 +24,7 @@ const CVBuilderPage = () => {
   const ActiveComponent = sections.find(section => section.id === activeSection)?.component;
   const activeIndex = sections.findIndex(section => section.id === activeSection);
 
-  const handleSectionChange = (sectionId) => {
-    setActiveSection(sectionId);
-  };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-slate-100">
