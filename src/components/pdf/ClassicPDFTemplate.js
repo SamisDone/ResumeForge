@@ -1,19 +1,19 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
-    padding: 50,
+    padding: 40,
     fontFamily: 'Times-Roman',
     fontSize: 11,
     lineHeight: 1.4,
   },
   header: {
     textAlign: 'center',
-    marginBottom: 30,
-    paddingBottom: 20,
+    marginBottom: 25,
+    paddingBottom: 15,
     borderBottomWidth: 1,
     borderBottomColor: '#333333',
   },
@@ -43,34 +43,34 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   section: {
-    marginBottom: 25,
+    marginBottom: 20,
   },
   sectionTitle: {
     fontSize: 14,
     fontWeight: 700,
     color: '#1F2937',
-    marginBottom: 15,
+    marginBottom: 12,
     textAlign: 'center',
     textTransform: 'uppercase',
     letterSpacing: 2,
     borderBottomWidth: 1,
     borderBottomColor: '#E5E7EB',
-    paddingBottom: 8,
+    paddingBottom: 6,
   },
   summaryText: {
     fontSize: 11,
     color: '#374151',
-    lineHeight: 1.6,
+    lineHeight: 1.5,
     textAlign: 'center',
     fontStyle: 'italic',
-    marginHorizontal: 30,
+    marginHorizontal: 25,
   },
   experienceItem: {
-    marginBottom: 20,
+    marginBottom: 15,
     textAlign: 'center',
   },
   experienceHeader: {
-    marginBottom: 8,
+    marginBottom: 6,
   },
   jobPosition: {
     fontSize: 13,
@@ -93,13 +93,13 @@ const styles = StyleSheet.create({
   responsibilities: {
     fontSize: 10,
     color: '#374151',
-    lineHeight: 1.5,
+    lineHeight: 1.4,
     textAlign: 'left',
-    marginHorizontal: 40,
+    marginHorizontal: 30,
     whiteSpace: 'pre-line',
   },
   educationItem: {
-    marginBottom: 15,
+    marginBottom: 12,
     textAlign: 'center',
   },
   degree: {
@@ -123,17 +123,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    gap: 12,
+    gap: 8,
   },
   skillItem: {
     textAlign: 'center',
     backgroundColor: '#F9FAFB',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
     borderRadius: 4,
     borderWidth: 1,
     borderColor: '#E5E7EB',
-    marginBottom: 8,
+    marginBottom: 6,
   },
   skillName: {
     fontSize: 10,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   projectItem: {
-    marginBottom: 20,
+    marginBottom: 15,
     textAlign: 'center',
   },
   projectTitle: {
@@ -160,10 +160,10 @@ const styles = StyleSheet.create({
   projectDescription: {
     fontSize: 10,
     color: '#374151',
-    lineHeight: 1.5,
-    marginBottom: 8,
+    lineHeight: 1.4,
+    marginBottom: 6,
     fontStyle: 'italic',
-    marginHorizontal: 30,
+    marginHorizontal: 25,
   },
   projectTechnologies: {
     flexDirection: 'row',
@@ -198,6 +198,21 @@ const ClassicPDFTemplate = ({ data }) => {
       <Page size="A4" style={styles.page}>
         {/* Header Section */}
         <View style={styles.header}>
+          {personalInfo?.profilePicture && (
+            <Image 
+              style={{ 
+                width: 100, 
+                height: 100, 
+                borderRadius: 50, 
+                marginBottom: 20, 
+                alignSelf: 'center', 
+                borderWidth: 2, 
+                borderColor: '#333333',
+                objectFit: 'cover'
+              }} 
+              src={personalInfo.profilePicture} 
+            />
+          )}
           <Text style={styles.name}>{personalInfo?.fullName || 'Your Name'}</Text>
           <Text style={styles.jobTitle}>{personalInfo?.jobTitle || 'Your Job Title'}</Text>
           <View style={styles.contactInfo}>

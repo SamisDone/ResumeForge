@@ -1,63 +1,64 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'column',
     backgroundColor: '#FFFFFF',
-    padding: 40,
+    padding: 30,
     fontFamily: 'Courier',
     fontSize: 10,
-    lineHeight: 1.3,
+    lineHeight: 1.4,
   },
   header: {
     marginBottom: 25,
   },
   name: {
     fontSize: 24,
-    fontWeight: 700,
+    fontWeight: 'bold',
     color: '#000000',
-    marginBottom: 6,
+    marginBottom: 8,
+    lineHeight: 1.2,
   },
   jobTitle: {
     fontSize: 14,
-    fontWeight: 400,
-    color: '#333333',
+    fontWeight: 'normal',
+    color: '#6B7280',
     marginBottom: 12,
+    lineHeight: 1.3,
   },
   contactInfo: {
     flexDirection: 'column',
     gap: 3,
-    fontSize: 9,
-    color: '#333333',
+    fontSize: 10,
+    color: '#6B7280',
   },
   contactItem: {
     marginBottom: 2,
   },
   section: {
-    marginBottom: 20,
+    marginBottom: 25,
   },
   sectionTitle: {
-    fontSize: 12,
-    fontWeight: 700,
+    fontSize: 10,
+    fontWeight: 'bold',
     color: '#000000',
-    marginBottom: 10,
+    marginBottom: 12,
     textTransform: 'uppercase',
-    letterSpacing: 1,
+    letterSpacing: 1.5,
+  },
+  sectionContent: {
+    paddingLeft: 15,
+    borderLeftWidth: 2,
+    borderLeftColor: '#000000',
   },
   summaryText: {
     fontSize: 10,
-    color: '#333333',
-    lineHeight: 1.4,
-    paddingLeft: 15,
-    borderLeftWidth: 2,
-    borderLeftColor: '#000000',
+    color: '#374151',
+    lineHeight: 1.6,
   },
   experienceItem: {
-    marginBottom: 15,
-    paddingLeft: 15,
-    borderLeftWidth: 2,
-    borderLeftColor: '#000000',
+    marginBottom: 20,
   },
   experienceHeader: {
     flexDirection: 'row',
@@ -67,76 +68,76 @@ const styles = StyleSheet.create({
   },
   jobPosition: {
     fontSize: 12,
-    fontWeight: 700,
+    fontWeight: 'bold',
     color: '#000000',
+    marginBottom: 2,
   },
   company: {
     fontSize: 10,
-    color: '#333333',
-    marginBottom: 4,
+    color: '#374151',
   },
   dateRange: {
-    fontSize: 9,
-    color: '#666666',
+    fontSize: 8,
+    color: '#6B7280',
   },
   responsibilities: {
-    fontSize: 9,
-    color: '#333333',
-    lineHeight: 1.3,
+    fontSize: 8,
+    color: '#374151',
+    lineHeight: 1.6,
     whiteSpace: 'pre-line',
+    marginTop: 6,
   },
   educationItem: {
     marginBottom: 12,
-    paddingLeft: 15,
-    borderLeftWidth: 2,
-    borderLeftColor: '#000000',
+  },
+  educationHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
   },
   degree: {
-    fontSize: 11,
-    fontWeight: 700,
+    fontSize: 12,
+    fontWeight: 'bold',
     color: '#000000',
+    marginBottom: 2,
   },
   institution: {
     fontSize: 10,
-    color: '#333333',
-    marginBottom: 2,
+    color: '#374151',
   },
   field: {
-    fontSize: 9,
-    color: '#666666',
-    marginBottom: 4,
-  },
-  skillsList: {
-    paddingLeft: 15,
-    borderLeftWidth: 2,
-    borderLeftColor: '#000000',
+    fontSize: 8,
+    color: '#6B7280',
+    marginTop: 2,
   },
   skillsText: {
     fontSize: 10,
-    color: '#333333',
+    color: '#374151',
     lineHeight: 1.4,
   },
   projectItem: {
     marginBottom: 15,
-    paddingLeft: 15,
-    borderLeftWidth: 2,
-    borderLeftColor: '#000000',
   },
-  projectTitle: {
-    fontSize: 11,
-    fontWeight: 700,
-    color: '#000000',
+  projectHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
     marginBottom: 4,
   },
+  projectTitle: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#000000',
+  },
   projectDescription: {
-    fontSize: 9,
-    color: '#333333',
-    lineHeight: 1.3,
+    fontSize: 8,
+    color: '#374151',
+    lineHeight: 1.6,
     marginBottom: 6,
   },
   projectTechnologies: {
-    fontSize: 9,
-    color: '#666666',
+    fontSize: 8,
+    color: '#6B7280',
   },
 });
 
@@ -168,7 +169,9 @@ const MinimalPDFTemplate = ({ data }) => {
         {summary && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Summary</Text>
-            <Text style={styles.summaryText}>{summary}</Text>
+            <View style={styles.sectionContent}>
+              <Text style={styles.summaryText}>{summary}</Text>
+            </View>
           </View>
         )}
 
@@ -176,22 +179,24 @@ const MinimalPDFTemplate = ({ data }) => {
         {workExperience && workExperience.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Experience</Text>
-            {workExperience.map((exp) => (
-              <View key={exp.id} style={styles.experienceItem}>
-                <View style={styles.experienceHeader}>
-                  <View>
-                    <Text style={styles.jobPosition}>{exp.position || 'Position'}</Text>
-                    <Text style={styles.company}>{exp.company || 'Company'}</Text>
+            <View style={styles.sectionContent}>
+              {workExperience.map((exp, index) => (
+                <View key={exp.id || index} style={styles.experienceItem}>
+                  <View style={styles.experienceHeader}>
+                    <View>
+                      <Text style={styles.jobPosition}>{exp.position || 'Position'}</Text>
+                      <Text style={styles.company}>{exp.company || 'Company'}</Text>
+                    </View>
+                    <Text style={styles.dateRange}>
+                      {formatDate(exp.startDate)} - {exp.current ? 'Present' : formatDate(exp.endDate)}
+                    </Text>
                   </View>
-                  <Text style={styles.dateRange}>
-                    {formatDate(exp.startDate)} - {exp.current ? 'Present' : formatDate(exp.endDate)}
-                  </Text>
+                  {exp.responsibilities && (
+                    <Text style={styles.responsibilities}>{exp.responsibilities}</Text>
+                  )}
                 </View>
-                {exp.responsibilities && (
-                  <Text style={styles.responsibilities}>{exp.responsibilities}</Text>
-                )}
-              </View>
-            ))}
+              ))}
+            </View>
           </View>
         )}
 
@@ -199,16 +204,22 @@ const MinimalPDFTemplate = ({ data }) => {
         {education && education.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Education</Text>
-            {education.map((edu) => (
-              <View key={edu.id} style={styles.educationItem}>
-                <Text style={styles.degree}>{edu.degree || 'Degree'}</Text>
-                <Text style={styles.institution}>{edu.institution || 'Institution'}</Text>
-                {edu.field && <Text style={styles.field}>{edu.field}</Text>}
-                <Text style={styles.dateRange}>
-                  {edu.startYear} - {edu.current ? 'Present' : edu.endYear}
-                </Text>
-              </View>
-            ))}
+            <View style={styles.sectionContent}>
+              {education.map((edu, index) => (
+                <View key={edu.id || index} style={styles.educationItem}>
+                  <View style={styles.educationHeader}>
+                    <View>
+                      <Text style={styles.degree}>{edu.degree || 'Degree'}</Text>
+                      <Text style={styles.institution}>{edu.institution || 'Institution'}</Text>
+                      {edu.field && <Text style={styles.field}>{edu.field}</Text>}
+                    </View>
+                    <Text style={styles.dateRange}>
+                      {edu.startYear} - {edu.current ? 'Present' : edu.endYear}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+            </View>
           </View>
         )}
 
@@ -216,7 +227,7 @@ const MinimalPDFTemplate = ({ data }) => {
         {skills && skills.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Skills</Text>
-            <View style={styles.skillsList}>
+            <View style={styles.sectionContent}>
               <Text style={styles.skillsText}>
                 {skills.map(skill => skill.name || 'Skill').join(', ')}
               </Text>
@@ -228,17 +239,21 @@ const MinimalPDFTemplate = ({ data }) => {
         {projects && projects.length > 0 && (
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>Projects</Text>
-            {projects.map((project) => (
-              <View key={project.id} style={styles.projectItem}>
-                <Text style={styles.projectTitle}>{project.title || 'Project Title'}</Text>
-                <Text style={styles.projectDescription}>{project.description || 'Project description'}</Text>
-                {project.technologies && (
-                  <Text style={styles.projectTechnologies}>
-                    Technologies: {project.technologies}
-                  </Text>
-                )}
-              </View>
-            ))}
+            <View style={styles.sectionContent}>
+              {projects.map((project, index) => (
+                <View key={project.id || index} style={styles.projectItem}>
+                  <View style={styles.projectHeader}>
+                    <Text style={styles.projectTitle}>{project.title || 'Project Title'}</Text>
+                  </View>
+                  <Text style={styles.projectDescription}>{project.description || 'Project description'}</Text>
+                  {project.technologies && (
+                    <Text style={styles.projectTechnologies}>
+                      Technologies: {project.technologies}
+                    </Text>
+                  )}
+                </View>
+              ))}
+            </View>
           </View>
         )}
       </Page>

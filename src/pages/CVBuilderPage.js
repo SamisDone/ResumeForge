@@ -7,7 +7,7 @@ import SkillsForm from '../components/forms/SkillsForm';
 import ProjectsForm from '../components/forms/ProjectsForm';
 import CVPreview from '../components/CVPreview';
 import { User, FileText, Briefcase, GraduationCap, Code, FolderOpen } from 'lucide-react';
-import { useCV } from '../context/CVContext';
+
 
 const CVBuilderPage = () => {
   const [activeSection, setActiveSection] = useState('personal');

@@ -12,24 +12,49 @@ const PreviewPage = () => {
 
   const handleDownloadPDF = async () => {
     try {
-      // Debug: Log the current state data
-      console.log('PDF Generation - Current state:', state);
-      console.log('PDF Generation - Selected template:', state.selectedTemplate);
-      console.log('PDF Generation - Personal info:', state.personalInfo);
-      console.log('PDF Generation - Work experience:', state.workExperience);
+      // Enhanced debugging
+      console.log('=== PDF EXPORT DEBUG ===');
+      console.log('Selected template:', state.selectedTemplate);
+      console.log('Personal info:', state.personalInfo);
+      console.log('Profile picture:', state.personalInfo?.profilePicture);
+      console.log('Work experience count:', state.workExperience?.length || 0);
+      console.log('Education count:', state.education?.length || 0);
+      console.log('Skills count:', state.skills?.length || 0);
+      console.log('Projects count:', state.projects?.length || 0);
+      console.log('========================');
       
-      const blob = await pdf(<PDFDocument data={state} template={state.selectedTemplate} />).toBlob();
+      // Ensure we have a valid template
+      const templateToUse = state.selectedTemplate || 'modern';
+      console.log('Using template:', templateToUse);
+      
+      // Generate PDF with enhanced error handling
+      const pdfDocument = <PDFDocument data={state} template={templateToUse} />;
+      console.log('PDF Document created, generating blob...');
+      
+      const blob = await pdf(pdfDocument).toBlob();
+      console.log('PDF blob generated successfully, size:', blob.size, 'bytes');
+      
+      // Download the PDF
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${state.personalInfo.fullName || 'CV'}_Resume.pdf`;
+      const fileName = `${state.personalInfo?.fullName || 'Resume'}_${templateToUse}.pdf`;
+      link.download = fileName;
+      console.log('Downloading PDF as:', fileName);
+      
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
       URL.revokeObjectURL(url);
+      
+      console.log('PDF download completed successfully!');
     } catch (error) {
-      console.error('Error generating PDF:', error);
-      alert('Error generating PDF. Please try again.');
+      console.error('=== PDF EXPORT ERROR ===');
+      console.error('Error details:', error);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+      console.error('========================');
+      alert(`Error generating PDF: ${error.message}. Please check the console for details.`);
     }
   };
 
